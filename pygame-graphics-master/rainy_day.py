@@ -53,15 +53,15 @@ rain = []
 for i in range(1000):
     x = random.randrange(-500, 800)
     y = random.randrange(-10, 600)
-    r = random.randrange(1, 5)
-    s = [x, y, r, r]
-    rain.append(s)
+    z = random.randrange(1, 5)
+    r = [x, y, z, z]
+    rain.append(r)
 
-def draw_rain(s):
-    x = s[0]
-    y = s[1]
+def draw_rain(r):
+    x = r[0]
+    y = r[1]
 
-    pygame.draw.ellipse(screen, BLUE, s)
+    pygame.draw.ellipse(screen, BLUE, r)
     
 # Game loop
 done = False
@@ -80,13 +80,13 @@ while not done:
            c[0] = random.randrange(-800, -100)
            c[1] = random.randrange(-50, 200)
 
-    for s in rain:
-        s[1] += 6
-        s[0] += 2.5
+    for r in rain:
+        r[0] += 2.5
+        r[1] += 6
 
-        if s[1] > 600:
-            s[0] = random.randrange(-500, 800)
-            s[1] = random.randrange(-10, 0)
+        if r[1] > random.randrange(500, 900):
+            r[0] = random.randrange(-500, 800)
+            r[1] = random.randrange(-10, 0)
              
     # Drawing code
     ''' sky '''
@@ -108,8 +108,8 @@ while not done:
     pygame.draw.line(screen, WHITE, [0, 410], [800, 410], 5)
 
     ''' rain '''
-    for s in rain:
-        draw_rain(s)
+    for r in rain:
+        draw_rain(r)
         
     ''' clouds '''
     for c in clouds:
